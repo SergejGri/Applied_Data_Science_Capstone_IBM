@@ -156,10 +156,6 @@ Then open `http://127.0.0.1:8050` in a browser.
 
 ---
 
-## Author
-
-> **TODO:** your name, and a link to your GitHub or LinkedIn profile if you want it there.
-
 ## Acknowledgements
 
 Course materials and lab templates by [IBM Skills Network](https://www.ibm.com/training/skills-network) via Coursera. Launch data from the [SpaceX REST API](https://github.com/r-spacex/SpaceX-API) and Wikipedia.
