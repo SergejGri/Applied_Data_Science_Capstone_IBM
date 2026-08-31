@@ -1,5 +1,3 @@
-# Applied_Data_Science_Capstone_IBM
-Final project from the course "IBM Data Science Professional Certificate"
 # SpaceX Falcon 9 First Stage Landing Prediction
 
 Capstone project for the **IBM Data Science Professional Certificate** (Applied Data Science Capstone).
@@ -27,28 +25,37 @@ This project takes the role of a data scientist at a hypothetical competitor, wo
 
 ## Repository structure
 
-> **TODO:** rename the entries below to match the actual filenames in your repo. The names used here are the defaults from the course labs.
+```
+Applied_Data_Science_Capstone_IBM/
+├── notebooks/     analysis notebooks and the Dash app
+├── datasets/      CSV inputs and outputs
+├── README.md
+├── LICENSE
+└── .gitignore
+```
+
+Notebooks live in `notebooks/` and all CSVs in `datasets/`, so paths inside the notebooks are relative: `../datasets/<file>.csv`.
 
 | # | Notebook / file | Stage |
 |---|---|---|
-| 1 | `jupyter-labs-spacex-data-collection-api.ipynb` | Data collection via the SpaceX REST API |
-| 2 | `jupyter-labs-webscraping.ipynb` | Data collection via web scraping (Wikipedia) |
-| 3 | `labs-jupyter-spacex-data-wrangling.ipynb` | Data wrangling and label creation |
-| 4 | `jupyter-labs-eda-sql-coursera_sqllite.ipynb` | Exploratory data analysis with SQL |
-| 5 | `jupyter-labs-eda-dataviz.ipynb` | Exploratory data analysis with visualisation |
+| 1 | `jupyter_labs_spacex_data_collection_api.ipynb` | Data collection via the SpaceX REST API |
+| 2 | `jupyter_labs_webscraping.ipynb` | Data collection via web scraping (Wikipedia) |
+| 3 | `labs_jupyter_spacex_Data_wrangling.ipynb` | Data wrangling and label creation |
+| 4 | `jupyter_labs_eda_sql_coursera_sqllite.ipynb` | Exploratory data analysis with SQL |
+| 5 | `jupyter_labs_eda_dataviz_v2.ipynb` | Exploratory data analysis with visualisation |
 | 6 | `lab_jupyter_launch_site_location.ipynb` | Interactive map with Folium |
-| 7 | `spacex_dash_app.py` | Interactive dashboard with Plotly Dash |
+| 7 | `notebooks/spacex_dash_app.py` | Interactive dashboard with Plotly Dash |
 | 8 | `SpaceX_Machine_Learning_Prediction_Part_5.ipynb` | Predictive analysis (classification) |
 
 ### Data files
 
 | File | Description |
 |---|---|
-| `dataset_part_1.csv` | Raw launch records from the SpaceX API |
-| `dataset_part_2.csv` | Cleaned data with the `Class` landing label |
-| `dataset_part_3.csv` | Feature-engineered data, one-hot encoded |
-| `spacex_web_scraped.csv` | Falcon 9 launch records scraped from Wikipedia |
-| `spacex_launch_dash.csv` | Input data for the Plotly Dash app |
+| `datasets/dataset_part_1.csv` | Falcon 9 launch records, 90 rows by 17 columns, 2010-06-04 to 2020-11-05 |
+| `datasets/dataset_part_2.csv` | Cleaned data with the `Class` landing label |
+| `datasets/dataset_part_3.csv` | Feature-engineered data, one-hot encoded |
+| `datasets/spacex_web_scraped.csv` | Falcon 9 launch records scraped from Wikipedia |
+| `datasets/spacex_launch_dash.csv` | Input data for the Plotly Dash app |
 
 ### Deliverables
 
@@ -63,6 +70,8 @@ This project takes the role of a data scientist at a hypothetical competitor, wo
 Two independent sources were combined:
 
 - **SpaceX REST API** (`api.spacexdata.com/v4`). Launch records were requested as JSON, normalised into a dataframe, and enriched by resolving the booster, launchpad, payload, and core IDs against their respective endpoints. Records were filtered to Falcon 9 only, and missing payload masses were imputed with the column mean.
+
+  The community-run r/SpaceX-API project was archived in June 2026 and its origin now returns a TLS 525 error. Booster version is therefore resolved offline from the three static v4 rocket IDs, and the remaining fields fall back to the equivalent snapshot hosted by the course. The notebook carries the full diagnosis.
 - **Web scraping.** Falcon 9 launch records were scraped from the relevant Wikipedia page with `requests` and `BeautifulSoup`, parsing the HTML launch tables into a structured dataframe.
 
 ### 2. Data wrangling
@@ -125,8 +134,8 @@ Each model was scored on cross-validation accuracy and on held-out test accuracy
 ## Running the project
 
 ```bash
-git clone <your-repo-url>
-cd <repo-name>
+git clone https://github.com/SergejGri/Applied_Data_Science_Capstone_IBM.git
+cd Applied_Data_Science_Capstone_IBM
 
 python -m venv .venv
 source .venv/bin/activate        # Windows: .venv\Scripts\activate
@@ -140,7 +149,7 @@ Run the notebooks in the order listed under [Repository structure](#repository-s
 To launch the dashboard:
 
 ```bash
-python spacex_dash_app.py
+python notebooks/spacex_dash_app.py
 ```
 
 Then open `http://127.0.0.1:8050` in a browser.
